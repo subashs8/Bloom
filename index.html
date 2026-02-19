@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bouquet Builder</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <h1>Bouquet Builder</h1>
+        <p>Create, arrange, and save your flower bouquets.</p>
+      </header>
+
+      <section class="workspace">
+        <aside class="panel palette-panel">
+          <h2>Flower Palette</h2>
+          <div id="palette" class="palette"></div>
+          <button id="clear-bouquet" class="danger">Clear Bouquet</button>
+        </aside>
+
+        <section class="canvas-panel">
+          <div class="canvas-toolbar">
+            <label>
+              Bouquet Name
+              <input id="bouquet-name" type="text" placeholder="My Spring Bouquet" />
+            </label>
+            <button id="save-bouquet" class="primary">Save Bouquet</button>
+          </div>
+
+          <div id="canvas" class="canvas" aria-label="Bouquet canvas"></div>
+
+          <div id="selection-controls" class="selection-controls" hidden>
+            <h3>Selected Flower</h3>
+            <label>
+              Size
+              <input id="scale-control" type="range" min="0.6" max="2" step="0.05" />
+            </label>
+            <label>
+              Rotation
+              <input id="rotation-control" type="range" min="-180" max="180" step="1" />
+            </label>
+            <div class="selection-buttons">
+              <button id="bring-front">Bring Front</button>
+              <button id="send-back">Send Back</button>
+              <button id="duplicate">Duplicate</button>
+              <button id="delete-selected" class="danger">Delete</button>
+            </div>
+          </div>
+        </section>
+
+        <aside class="panel saved-panel">
+          <h2>Saved Bouquets</h2>
+          <div id="saved-list" class="saved-list"></div>
+        </aside>
+      </section>
+    </main>
+
+    <template id="saved-item-template">
+      <article class="saved-item">
+        <div class="saved-item-text">
+          <strong class="saved-name"></strong>
+          <span class="saved-date"></span>
+        </div>
+        <div class="saved-actions">
+          <button class="load-btn">Load</button>
+          <button class="delete-btn danger">Delete</button>
+        </div>
+      </article>
+    </template>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

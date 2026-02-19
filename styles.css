@@ -1,0 +1,266 @@
+:root {
+  --bg: #f8f5ef;
+  --bg-soft: #fffdf9;
+  --panel: #ffffff;
+  --ink: #2a2a2a;
+  --accent: #2f8f57;
+  --accent-hover: #267449;
+  --danger: #c0392b;
+  --border: #d9d1c2;
+  --shadow: 0 8px 24px rgba(66, 44, 14, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 10% 20%, #fff9f0 0%, #f4efe7 35%, #efe7db 100%);
+}
+
+.app {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.topbar {
+  margin-bottom: 1rem;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+}
+
+.topbar p {
+  margin: 0.3rem 0 0;
+  opacity: 0.8;
+}
+
+.workspace {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 250px 1fr 300px;
+}
+
+.panel,
+.canvas-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.panel {
+  padding: 1rem;
+}
+
+.panel h2 {
+  margin-top: 0;
+  font-size: 1.05rem;
+}
+
+.palette {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-bottom: 1rem;
+}
+
+.palette button {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-soft);
+  padding: 0.55rem;
+  cursor: pointer;
+  font-size: 1.55rem;
+  transition: transform 150ms ease, border-color 150ms ease;
+}
+
+.palette button:hover {
+  transform: translateY(-1px);
+  border-color: #a8c8af;
+}
+
+.canvas-panel {
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.canvas-toolbar {
+  display: flex;
+  gap: 0.6rem;
+  align-items: end;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+}
+
+input[type="text"] {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.6rem;
+  min-width: 220px;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  background: #eae5dd;
+  color: var(--ink);
+  padding: 0.52rem 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button.primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+button.primary:hover {
+  background: var(--accent-hover);
+}
+
+button.danger {
+  background: #f7d6d3;
+  color: #761d16;
+}
+
+.canvas {
+  position: relative;
+  min-height: 470px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(246, 242, 232, 0.96)),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 31px,
+      rgba(129, 108, 70, 0.07) 31px,
+      rgba(129, 108, 70, 0.07) 32px
+    );
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  touch-action: none;
+}
+
+.flower-item {
+  position: absolute;
+  transform-origin: center;
+  font-size: 2.4rem;
+  line-height: 1;
+  user-select: none;
+  cursor: grab;
+  transition: filter 120ms ease;
+}
+
+.flower-item.selected {
+  filter: drop-shadow(0 0 6px rgba(47, 143, 87, 0.65));
+}
+
+.flower-item.dragging {
+  cursor: grabbing;
+}
+
+.selection-controls {
+  border: 1px dashed #c7beaf;
+  border-radius: 10px;
+  padding: 0.7rem;
+  display: grid;
+  gap: 0.55rem;
+  background: #fcfaf6;
+}
+
+.selection-controls h3 {
+  margin: 0;
+}
+
+.selection-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.saved-list {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.saved-item {
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  border-radius: 9px;
+  padding: 0.6rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.saved-item-text {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.saved-name {
+  font-size: 0.95rem;
+}
+
+.saved-date {
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+.saved-actions {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.empty-state {
+  margin: 0;
+  padding: 0.5rem;
+  border: 1px dashed var(--border);
+  border-radius: 9px;
+  color: #695d49;
+  background: #fdf9f3;
+}
+
+@media (max-width: 1080px) {
+  .workspace {
+    grid-template-columns: 230px 1fr;
+  }
+
+  .saved-panel {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 760px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .saved-panel {
+    grid-column: auto;
+  }
+
+  .canvas-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  input[type="text"] {
+    min-width: 0;
+    width: 100%;
+  }
+}
