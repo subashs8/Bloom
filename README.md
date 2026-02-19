@@ -1,4 +1,4 @@
-# Bouquet Builder
+# Bloom
 
 A browser-based game where users can create and arrange a flower bouquet, then save past creations.
 
